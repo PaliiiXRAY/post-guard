@@ -1,0 +1,31 @@
+{
+  "name": "post-guard",
+  "version": "1.0.0",
+  "description": "Next-Gen Enterprise Post-Quantum Cryptographic Scanner & Migration Engine (FSD-II Capstone)",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js",
+    "test": "node test/pipeline.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "keywords": [
+    "post-quantum",
+    "cryptography",
+    "nist-fips-203",
+    "nist-fips-204",
+    "pqc",
+    "ast-scanner",
+    "full-stack",
+    "mern",
+    "express",
+    "react",
+    "tailwind"
+  ],
+  "author": "Pallabi Pandi <pallabitheprincess74@gmail.com>",
+  "license": "MIT"
+}
