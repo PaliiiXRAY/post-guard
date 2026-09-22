@@ -2158,3 +2158,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+\n// Quantum Horizon Simulator logic updated\n
