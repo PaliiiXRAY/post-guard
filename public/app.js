@@ -2158,4 +2158,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-\n// Quantum Horizon Simulator logic updated\n
+\n// Debounced scan controller updated\n
