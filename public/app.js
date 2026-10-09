@@ -2158,4 +2158,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-\n// Debounced scan controller updated\n
+\n// IDE diff view with copy-to-clipboard integration\n
