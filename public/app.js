@@ -2158,4 +2158,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-\n// IDE diff view with copy-to-clipboard integration\n
