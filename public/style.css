@@ -1,33 +1,372 @@
-/* ECDAT v2 — Professional Console Styling (Blueprint Compliant) */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* =========================================================================
+   PostGuard — Enterprise Design System & Tokens (tokens.ts / style.css)
+   Typography: Inter (UI & Headings) + JetBrains Mono (Telemetry & Crypto)
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --bg-void: #05070d;
-    --border-subtle: rgba(148, 163, 184, 0.12);
+    /* Dark Theme Surfaces (Default) */
+    --canvas-bg: #0a0d14;
+    --surface-1: #0e121b;
+    --surface-2: #121622;
+    --surface-3: #181d2a;
+    
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --border-default: rgba(255, 255, 255, 0.12);
+    --border-accent: rgba(99, 102, 241, 0.35);
+
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Cascadia Mono', 'Consolas', monospace;
+}
+
+html.light {
+    /* Light Theme Surfaces */
+    --canvas-bg: #f1f5f9;
+    --surface-1: #ffffff;
+    --surface-2: #f8fafc;
+    --surface-3: #e2e8f0;
+
+    --border-subtle: #e2e8f0;
+    --border-default: #cbd5e1;
+    --border-accent: rgba(79, 70, 229, 0.4);
+
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: var(--bg-void);
-    color: #e2e8f0;
+    font-family: var(--font-sans);
+    background-color: var(--canvas-bg);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-.font-serif {
-    font-family: 'Instrument Serif', Georgia, serif;
-}
-
+/* Typography Utility Classes */
 .font-mono {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono) !important;
+}
+
+.font-sans {
+    font-family: var(--font-sans) !important;
+}
+
+/* Harmonized Font Scale */
+.kpi-number {
+    font-family: var(--font-mono);
+    font-size: 1.875rem; /* text-3xl */
+    line-height: 2.25rem;
+    font-weight: 900; /* font-black */
+    letter-spacing: -0.025em;
+}
+
+.section-header {
+    font-family: var(--font-sans);
+    font-size: 1.125rem; /* text-lg */
+    line-height: 1.75rem;
+    font-weight: 700; /* font-bold */
+    letter-spacing: -0.025em;
+}
+
+.micro-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.body-text {
+    font-size: 0.75rem; /* text-xs */
+    line-height: 1rem;
+    font-weight: 500;
+}
+
+/* High Contrast Light Mode Rules */
+html.light .text-title {
+    color: #0f172a !important;
+}
+
+html.light .text-secondary {
+    color: #334155 !important;
+}
+
+html.light .surface-card {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .surface-card {
+    background-color: var(--surface-1);
+    border-color: var(--border-default);
+}
+
+/* Surface Tokens */
+.bg-canvas { background-color: var(--canvas-bg); }
+.bg-surface-1 { background-color: var(--surface-1); }
+.bg-surface-2 { background-color: var(--surface-2); }
+.bg-surface-3 { background-color: var(--surface-3); }
+
+/* =========================================================================
+   Solid High-Contrast Risk Tier Badges (Readable in Dark & Light Rooms)
+   ========================================================================= */
+.badge-critical {
+    background-color: #dc2626 !important; /* bg-red-600 */
+    color: #ffffff !important;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    box-shadow: 0 1px 2px 0 rgba(220, 38, 38, 0.35);
+}
+
+.badge-high {
+    background-color: #d97706 !important; /* bg-amber-600 */
+    color: #ffffff !important;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    box-shadow: 0 1px 2px 0 rgba(217, 119, 6, 0.35);
+}
+
+.badge-moderate {
+    background-color: #2563eb !important; /* bg-blue-600 */
+    color: #ffffff !important;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    box-shadow: 0 1px 2px 0 rgba(37, 99, 235, 0.35);
+}
+
+.badge-low {
+    background-color: #059669 !important; /* bg-emerald-600 */
+    color: #ffffff !important;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    box-shadow: 0 1px 2px 0 rgba(5, 150, 105, 0.35);
+}
+
+/* =========================================================================
+   Data Provenance Badges (Mandatory Source Tracking Pills with 2px borders)
+   ========================================================================= */
+.provenance-forecast {
+    border: 2px solid #3b82f6 !important; /* Blue-500 */
+    background: rgba(59, 130, 246, 0.12);
+    color: #3b82f6;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.provenance-observed {
+    border: 2px solid #10b981 !important; /* Emerald-500 */
+    background: rgba(16, 185, 129, 0.12);
+    color: #10b981;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.provenance-model {
+    border: 2px solid #a855f7 !important; /* Purple-500 */
+    background: rgba(168, 85, 247, 0.12);
+    color: #a855f7;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.provenance-archive {
+    border: 2px solid #64748b !important; /* Slate-500 */
+    background: rgba(100, 116, 139, 0.12);
+    color: #94a3b8;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.provenance-simulated {
+    border: 2px solid #f59e0b !important; /* Amber-500 */
+    background: rgba(245, 158, 11, 0.12);
+    color: #f59e0b;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.provenance-review {
+    border: 2px solid #f43f5e !important; /* Rose-500 */
+    background: rgba(244, 63, 94, 0.12);
+    color: #f43f5e;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* =========================================================================
+   Floating Toast Notification System (Top-Right Floating with 3.5s dismiss)
+   ========================================================================= */
+#toast-container {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 24rem;
+    width: calc(100vw - 2.5rem);
+    pointer-events: none;
+}
+
+.toast-item {
+    pointer-events: auto;
+    backdrop-filter: blur(16px);
+    background: rgba(14, 18, 27, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.75rem;
+    padding: 0.875rem 1rem;
+    color: #ffffff;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+html.light .toast-item {
+    background: rgba(255, 255, 255, 0.96);
+    border-color: #cbd5e1;
+    color: #0f172a;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6366f1, #10b981);
+    width: 100%;
+    animation: toastProgress 3.5s linear forwards;
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(2rem) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes toastSlideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(2rem) scale(0.95);
+    }
+}
+
+@keyframes toastProgress {
+    from { width: 100%; }
+    to { width: 0%; }
 }
 
 /* Custom Scrollbars */
-::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: #334155; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
 
-.light ::-webkit-scrollbar-thumb { background: #cbd5e1; }
-.light ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+html.light ::-webkit-scrollbar-thumb { background: #cbd5e1; }
+html.light ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
 /* Thin Icon Rail Styling */
 .rail-item {
@@ -36,12 +375,12 @@ body {
 }
 
 .rail-item.active {
-    background-color: rgba(99, 102, 241, 0.16);
+    background-color: rgba(99, 102, 241, 0.18);
     color: #818cf8;
     border-left: 3px solid #6366f1;
 }
 
-.light .rail-item.active {
+html.light .rail-item.active {
     background-color: #e0e7ff;
     color: #4338ca;
     border-left: 3px solid #4f46e5;
@@ -56,14 +395,14 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: all 0.15s ease-out;
-    background: #0f172a;
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: #0e121b;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 0.5rem;
     padding: 0.25rem 0.6rem;
     font-size: 0.75rem;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     white-space: nowrap;
-    color: #f8fafc;
+    color: #ffffff;
     z-index: 60;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
@@ -73,94 +412,31 @@ body {
     transform: translateY(-50%) translateX(0);
 }
 
-/* Glass Panels */
-.glass-panel {
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(148, 163, 184, 0.12);
+/* Radar & Scanning Beam Effect */
+.scan-beam {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #6366f1, #10b981, transparent);
+    box-shadow: 0 0 15px 3px rgba(99, 102, 241, 0.6);
+    animation: scanAnimation 2.4s ease-in-out infinite;
 }
 
-.light .glass-panel {
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid #e2e8f0;
+@keyframes scanAnimation {
+    0% { top: 0%; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
 }
 
-/* Code Diff Blocks */
-.code-diff-before {
-    background-color: rgba(69, 10, 10, 0.25);
-    border-left: 3px solid #ef4444;
-    color: #fecaca;
+/* Pulse Glow Keyframes */
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.25); }
+    50% { box-shadow: 0 0 25px rgba(99, 102, 241, 0.55); }
 }
 
-.light .code-diff-before {
-    background-color: #fef2f2;
-    border-left: 3px solid #ef4444;
-    color: #991b1b;
+.animate-pulse-glow {
+    animation: pulseGlow 3s infinite ease-in-out;
 }
-
-.code-diff-after {
-    background-color: rgba(2, 44, 34, 0.25);
-    border-left: 3px solid #10b981;
-    color: #a7f3d0;
-}
-
-.light .code-diff-after {
-    background-color: #ecfdf5;
-    border-left: 3px solid #10b981;
-    color: #065f46;
-}
-
-/* View Transition Fade */
-.view-panel {
-    animation: viewIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes viewIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Light Theme Overrides */
-.light body {
-    background-color: #f8fafc;
-    color: #0f172a;
-}
-
-.light aside {
-    background-color: #ffffff;
-    border-color: #e2e8f0;
-}
-
-.light main {
-    background-color: #f8fafc;
-    color: #0f172a;
-}
-
-.light .bg-slate-900 {
-    background-color: #ffffff;
-    border-color: #e2e8f0;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-}
-
-.light .bg-slate-950,
-.light .bg-slate-950\/60,
-.light .bg-slate-950\/50,
-.light .bg-slate-950\/70,
-.light .bg-slate-950\/40 {
-    background-color: #f1f5f9;
-    border-color: #e2e8f0;
-}
-
-.light .text-white {
-    color: #0f172a;
-}
-
-.light .text-slate-300 {
-    color: #334155;
-}
-
-.light .text-slate-400,
-.light .text-slate-500 {
-    color: #64748b;
-}
-\n/* SVG donut and clock styles */\n

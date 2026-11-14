@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PostGuard Workspace — Cryptographic Surface &amp; PQC Migration</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%239333ea'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-size='13' font-weight='800' text-anchor='middle' fill='white' font-family='monospace'%3EEC%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script>
         // Restore saved theme before first paint to avoid a flash
         try {
-            if (localStorage.getItem('ecdat-theme') === 'light') {
+            if (localStorage.getItem('postguard-theme') === 'light' || localStorage.getItem('ecdat-theme') === 'light') {
                 document.documentElement.classList.remove('dark');
                 document.documentElement.classList.add('light');
             }
@@ -16,7 +16,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -24,12 +24,17 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        serif: ['"Instrument Serif"', 'serif'],
-                        mono: ['"IBM Plex Mono"', 'monospace'],
-                        sans: ['"Inter"', '-apple-system', 'sans-serif'],
+                        sans: ['"Inter"', 'Segoe UI', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'Cascadia Mono', 'Consolas', 'monospace']
                     },
                     colors: {
-                        void: '#05070d',
+                        void: '#0a0d14',
+                        canvas: '#0a0d14',
+                        surface: {
+                            1: '#0e121b',
+                            2: '#121622',
+                            3: '#181d2a'
+                        },
                         brand: {
                             50: '#eef2ff',
                             100: '#e0e7ff',
@@ -47,9 +52,11 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/static/style.css">
 </head>
-<body class="bg-void text-slate-100 min-h-screen font-sans flex antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-200">
+<body class="bg-canvas text-slate-100 min-h-screen font-sans flex antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-200">
+    <div id="toast-container"></div>
 
     <!-- ========================================================================= -->
     <!-- THIN ICON RAIL (56px-64px) — Blueprint Compliant                          -->
@@ -58,8 +65,10 @@
         
         <div class="flex flex-col items-center gap-6 w-full">
             <!-- Brand Logo (Click returns to Landing / Entry) -->
-            <a href="/" title="ECDAT Home (Cinematic Entry)" class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-extrabold text-white font-mono shadow-md shadow-indigo-500/20 text-xs tracking-wider transition-transform hover:scale-105 active:scale-95">
-                EC
+            <a href="/" title="PostGuard Home (Landing Portal)" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-400 p-[1.5px] shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-transform hover:scale-105 active:scale-95 flex items-center justify-center">
+                <div class="w-full h-full bg-[#0e121b] rounded-[10px] flex items-center justify-center">
+                    <img src="/favicon.svg" alt="PG" class="w-6 h-6">
+                </div>
             </a>
 
             <!-- 5 Navigation Modes -->
@@ -125,6 +134,43 @@
     <!-- MAIN WORKSPACE VIEWPORT                                                   -->
     <!-- ========================================================================= -->
     <main class="flex-1 overflow-y-auto h-screen relative bg-void text-slate-100 transition-colors duration-200" id="main-viewport">
+
+        <!-- Top Global Navigation & 4-Portal Bar -->
+        <header class="sticky top-0 z-30 bg-[#0a0d14]/90 backdrop-blur-md border-b border-white/[0.08] px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="text-xs font-mono font-bold text-slate-400">ACTIVE PORTAL:</span>
+                <div class="inline-flex rounded-lg p-1 bg-[#121622] border border-white/[0.08] text-xs font-mono" id="portal-selector-group">
+                    <button onclick="setPortalRole('executive')" id="btn-portal-executive" class="px-2.5 py-1 rounded font-semibold text-slate-400 hover:text-white transition flex items-center gap-1.5">
+                        <i data-lucide="shield" class="w-3.5 h-3.5 text-indigo-400"></i>
+                        <span>Executive</span>
+                    </button>
+                    <button onclick="setPortalRole('analyst')" id="btn-portal-analyst" class="px-2.5 py-1 rounded font-semibold text-white bg-indigo-600/30 border border-indigo-500/40 transition flex items-center gap-1.5">
+                        <i data-lucide="search" class="w-3.5 h-3.5 text-emerald-400"></i>
+                        <span>Analyst</span>
+                    </button>
+                    <button onclick="setPortalRole('engineer')" id="btn-portal-engineer" class="px-2.5 py-1 rounded font-semibold text-slate-400 hover:text-white transition flex items-center gap-1.5">
+                        <i data-lucide="code-2" class="w-3.5 h-3.5 text-blue-400"></i>
+                        <span>Engineer</span>
+                    </button>
+                    <button onclick="setPortalRole('auditor')" id="btn-portal-auditor" class="px-2.5 py-1 rounded font-semibold text-slate-400 hover:text-white transition flex items-center gap-1.5">
+                        <i data-lucide="file-check" class="w-3.5 h-3.5 text-purple-400"></i>
+                        <span>Auditor</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Data Provenance Badge -->
+                <span class="provenance-observed hidden sm:inline-flex">
+                    NIST FIPS 203/204 VERIFIED
+                </span>
+
+                <!-- Toast Demo Trigger -->
+                <button onclick="showToast('Threat Alert', 'Shor\'s discrete log break detected on SECP256R1.', 'critical')" class="text-[11px] font-mono px-2.5 py-1 rounded-lg border border-white/[0.08] bg-[#121622] text-slate-400 hover:text-white transition">
+                    Test Toast
+                </button>
+            </div>
+        </header>
 
         <!-- ===================================================================== -->
         <!-- VIEW 0: CRYPTOGRAPHIC SURFACE (THE UNIVERSE GRAPH)                   -->
