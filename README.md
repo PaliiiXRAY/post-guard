@@ -1,6 +1,6 @@
 # 🛡️ PostGuard | Enterprise Post-Quantum Cryptographic Scanner & Migration Engine
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-post--guard--ecdat.vercel.app-6366f1?style=for-the-badge&logo=vercel)](https://post-guard-ecdat.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-post--guard--one.vercel.app-6366f1?style=for-the-badge&logo=vercel)](https://post-guard-one.vercel.app)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-PaliiiXRAY%2Fpost--guard-181717?style=for-the-badge&logo=github)](https://github.com/PaliiiXRAY/post-guard)
 [![Stack](https://img.shields.io/badge/Stack-Node.js%20%7C%20Express%20%7C%20React%20%7C%20Tailwind-61dafb?style=for-the-badge&logo=react)](file:///./package.json)
 [![Standards](https://img.shields.io/badge/Standards-NIST%20FIPS%20203%20%2F%20204-10b981?style=for-the-badge)](https://csrc.nist.gov/pubs/fips/203/final)
@@ -232,7 +232,9 @@ npm test
 
 ## 🌐 Live Production Deployment
 
-- **Production Web Application**: [https://post-guard-ecdat.vercel.app/](https://post-guard-ecdat.vercel.app/)
+- **Production Web Application**: [https://post-guard-one.vercel.app/](https://post-guard-one.vercel.app/)
+- **Interactive Workspace**: [https://post-guard-one.vercel.app/index.html](https://post-guard-one.vercel.app/index.html)
+- **Vector Favicon & Assets**: [https://post-guard-one.vercel.app/favicon.svg](https://post-guard-one.vercel.app/favicon.svg)
 - **GitHub Repository**: [https://github.com/PaliiiXRAY/post-guard](https://github.com/PaliiiXRAY/post-guard)
 
 ---
@@ -242,3 +244,9 @@ npm test
 - **Developer**: Pallabi Pandi ([@PaliiiXRAY](https://github.com/PaliiiXRAY))
 - **Email**: palipallabi9@gmail.com
 - **License**: MIT License
+
+---
+
+## 🙏 Acknowledgments & Thanks
+
+Special thanks to our academic faculty mentors, evaluators, and the open-source post-quantum cryptography research community (NIST, Open Quantum Safe, and CycloneDX Working Group) for standardized post-quantum migration frameworks and technical specifications.

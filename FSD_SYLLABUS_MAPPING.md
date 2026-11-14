@@ -2,7 +2,7 @@
 
 **Course**: Full Stack Development II (B.E. Computer Science & Engineering - 2028 PO Batch)  
 **Project Title**: PostGuard — Enterprise Post-Quantum Cryptographic Scanner & Migration Engine  
-**Live Production URL**: [https://post-guard-ecdat.vercel.app/](https://post-guard-ecdat.vercel.app/)  
+**Live Production URL**: [https://post-guard-one.vercel.app/](https://post-guard-one.vercel.app/)  
 **GitHub Repository**: [https://github.com/PaliiiXRAY/post-guard](https://github.com/PaliiiXRAY/post-guard)  
 **Author**: Pallabi Pandi (`pallabitheprincess74@gmail.com`)
 
@@ -132,7 +132,7 @@ flowchart TD
 | **Session 27** | Real-Time Reactive Operations | Reactive State Synchronization | Instant Mosca inequality updates and SVG donut animations responding to slider drag events |
 | **Session 28** | Serverless Deployments | Vercel Serverless Edge Functions | Configured via `api/index.js` and `vercel.json` as a Node.js serverless micro-backend |
 | **Session 29** | Dockerizing the Full-Stack Application | Dockerfile, `docker-compose` | Production `Dockerfile` and `docker-compose.yml` orchestrating Node.js app and MongoDB service |
-| **Session 30** | Capstone Cloud Deployment | Production Deployment, Load Test | Live on Vercel at `https://post-guard-ecdat.vercel.app/`, audited under 100+ concurrent requests |
+| **Session 30** | Capstone Cloud Deployment | Production Deployment, Load Test | Live on Vercel at `https://post-guard-one.vercel.app/`, audited under 100+ concurrent requests |
 
 ---
 
