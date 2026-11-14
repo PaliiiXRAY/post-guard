@@ -64,7 +64,42 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// 2. Preloaded Enterprise Samples
+// 2. Preloaded Enterprise Samples & Presets
+app.get('/api/presets', (req, res) => {
+  res.status(200).json({
+    sectors: {
+      defense: { x_years: 25, label: "Defense & Military Intelligence" },
+      healthcare: { x_years: 20, label: "Healthcare & Patient Records (HIPAA)" },
+      banking: { x_years: 15, label: "Banking & Financial Records (RBI/PCI-DSS)" },
+      government: { x_years: 20, label: "Government Classified / PMO Communications" },
+      aadhaar: { x_years: 30, label: "Aadhaar & National Identity Infrastructure" },
+      enterprise: { x_years: 10, label: "Enterprise SaaS & Cloud Applications" },
+      ecommerce: { x_years: 5, label: "E-Commerce & Transaction Data" },
+      general: { x_years: 7, label: "General Purpose Application Data" }
+    },
+    horizons: {
+      conservative: {
+        label: "Conservative Estimate (NIST/Academic Consensus)",
+        z_years: 15,
+        source: "NIST PQC Standardization Report, 2024",
+        description: "Most conservative timeline assuming slow progress in error correction."
+      },
+      moderate: {
+        label: "Moderate Estimate (Industry Consensus)",
+        z_years: 10,
+        source: "IBM Quantum Roadmap 2033, Google Willow Milestone",
+        description: "Based on current industry roadmaps from IBM, Google, and Chinese quantum programs."
+      },
+      aggressive: {
+        label: "Aggressive Estimate (State Actor Threat)",
+        z_years: 5,
+        source: "NSA CNSA 2.0 Advisory, NTRO Threat Brief",
+        description: "Assumes state-sponsored programs (China, US) may achieve CRQC capabilities sooner."
+      }
+    }
+  });
+});
+
 app.get('/api/samples', (req, res) => {
   const sampleList = Object.values(SAMPLES).map(s => ({
     id: s.id,
