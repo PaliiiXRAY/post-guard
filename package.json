@@ -1,7 +1,7 @@
 {
   "name": "post-guard",
   "version": "1.0.0",
-  "description": "Next-Gen Enterprise Post-Quantum Cryptographic Scanner & Migration Engine (FSD-II Capstone)",
+  "description": "Next-Gen Enterprise Post-Quantum Cryptographic Scanner & Migration Engine",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",

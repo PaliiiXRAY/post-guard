@@ -67,7 +67,7 @@ export default function PostGuardApp() {
           <div className="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20">PG</div>
           <div>
             <h1 className="text-lg font-bold tracking-tight text-white flex items-center gap-2">
-              PostGuard <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-medium">FSD-II Capstone</span>
+              PostGuard <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-medium">NIST FIPS 203/204 Ready</span>
             </h1>
             <p className="text-xs text-slate-400">Post-Quantum Cryptographic Scanner & Remediation Engine</p>
           </div>

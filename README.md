@@ -6,7 +6,7 @@
 [![Standards](https://img.shields.io/badge/Standards-NIST%20FIPS%20203%20%2F%20204-10b981?style=for-the-badge)](https://csrc.nist.gov/pubs/fips/203/final)
 [![CBOM](https://img.shields.io/badge/Format-CycloneDX%201.6%20CBOM-cyan?style=for-the-badge)](https://cyclonedx.org)
 [![Docker](https://img.shields.io/badge/Container-Docker%20Ready-2496ed?style=for-the-badge&logo=docker)](file:///./docker-compose.yml)
-[![Academic Project](https://img.shields.io/badge/Academic%20Submission-Full%20Stack%20Development%20II-orange?style=for-the-badge)](#-fsd-ii-academic-curriculum-mapping)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
 ---
 
@@ -180,24 +180,20 @@ sequenceDiagram
 
 ---
 
-## 🎓 FSD-II Academic Curriculum Mapping
+## 🔬 Cryptographic Compliance & Threat Modeling
 
-PostGuard satisfies the syllabus requirements of **Full Stack Development II (2028 PO Batch - B.E. CSE)**:
+PostGuard implements formal mathematical and regulatory frameworks to measure post-quantum migration urgency:
 
-| Module & Sessions | Focused Technical Skill | How PostGuard Implements It |
+| Security Vector | Implementation Standard | Quantum Protection Mechanism |
 | :--- | :--- | :--- |
-| **Frontend Core (Sessions 1–2)** | React Fundamentals, JSX, Architecture | Modular dashboard layout, view transitions (`/entry.html` ↔ `/index.html`), 60fps render loops (<16ms) |
-| **Frontend State (Sessions 3–5)** | State Management, Async Fetching & Debounce | Strict state transitions with `useState`, 350ms debounced live-code scanning, real-time recalculations |
-| **SPA Navigation (Sessions 6–8)** | Multi-View Routing, Dynamic Parameters | URL parameters for preloaded test suites (`finpay-auth`, `healthmed-ehr`, `gov-identity-pki`) |
-| **Enterprise State & Testing (Sessions 9–11)** | Immutable State, Automated TDD Testing | Automated test suite in `test/pipeline.test.js` verifying scanner, grading algorithms, and CBOM output |
-| **Backend Core (Sessions 13–15)** | Node Event Loop, Low Memory Footprint | Non-blocking Express server, streaming token analysis maintaining V8 heap strictly < 35MB |
-| **Backend APIs & Standards (Sessions 16–18)** | Enterprise REST Architecture, HTTP Codes | REST endpoints with clean JSON responses, error handling, CORS headers, and standard status codes |
-| **Security & Compliance (Sessions 19–21)** | Cryptographic Auditing, Attack Mitigation | AST detection of legacy ciphers (RSA, DES, MD5, SHA1) and automated NIST FIPS 203/204 remediation |
-| **Integration & Real-Time (Sessions 25–27)** | Full-Stack Sync, Reactive State Updates | Live Mosca inequality evaluation, sub-second client-server synchronization |
-| **DevOps & Containers (Sessions 28–29)** | Serverless Functions, Docker Containerization | Multi-stage `Dockerfile`, `docker-compose.yml`, and Vercel serverless edge configuration |
-| **Capstone Deployment (Session 30)** | Live Cloud Deployment, Concurrent Load | Deployed globally on Vercel at `https://post-guard-ecdat.vercel.app`, tested under 100+ concurrent requests |
+| **Key Encapsulation (KEM)** | NIST FIPS 203 (ML-KEM-768/1024) | Replaces Shor-vulnerable RSA/DH with Module-Lattice-based cryptography |
+| **Digital Signatures (DSA)** | NIST FIPS 204 (ML-DSA-65/87) | Replaces ECDSA/RSA signatures with lattice-based authentication |
+| **Symmetric Ciphers** | NIST SP 800-38D (AES-256-GCM) | Provides 128-bit quantum security margin against Grover's algorithm |
+| **Cryptographic Inventory** | CycloneDX 1.6 CBOM | Standardized JSON BOM with `cdx:crypto:*` properties for supply-chain audits |
+| **Threat Window Theorem** | Mosca's Inequality ($X + Y > Z$) | Quantifies confidentiality shelf-life ($X$) + migration time ($Y$) vs CRQC arrival ($Z$) |
+| **Automated Verification** | Continuous Test Pipeline | End-to-end regression testing across enterprise vulnerability patterns |
 
-*(See [FSD_SYLLABUS_MAPPING.md](file:///./FSD_SYLLABUS_MAPPING.md) for the complete 30-session evaluation guide and viva defense script).*
+> **Note**: For academic curriculum mapping and comprehensive technical viva defense documentation, refer to [FSD_SYLLABUS_MAPPING.md](file:///./FSD_SYLLABUS_MAPPING.md).
 
 ---
 
