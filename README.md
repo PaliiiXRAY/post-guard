@@ -240,5 +240,5 @@ npm test
 ## 📜 Author & License
 
 - **Developer**: Pallabi Pandi ([@PaliiiXRAY](https://github.com/PaliiiXRAY))
-- **Email**: pallabitheprincess74@gmail.com
+- **Email**: palipallabi9@gmail.com
 - **License**: MIT License
