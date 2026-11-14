@@ -38,6 +38,119 @@ Adversaries are actively executing **Harvest Now, Decrypt Later (HNDL)** attacks
 
 ---
 
+## 🏛️ End-to-End System Architecture
+
+```mermaid
+flowchart TD
+    subgraph ClientTier["Client Tier (React 18 & Tailwind CSS)"]
+        UI["Reactive Web Workspace"]
+        subgraph Components["Modular UI Components"]
+            HUD["Executive HUD & Posture Score"]
+            Slider["Horizon Simulator (2026-2040)"]
+            Clock["Live Threat Countdown Clock"]
+            Donut["SVG Algorithm Family Donut"]
+            Editor["Live Code Editor & AST Scanner"]
+            Diff["IDE Side-by-Side Remediation"]
+            Gantt["Migration Timeline & Gantt View"]
+        end
+        UI --> Components
+    end
+
+    subgraph NetworkTier["Edge & Gateway Tier"]
+        Vercel["Vercel Edge Global CDN"]
+        CORS["CORS & Request Normalizer"]
+        RateLimit["In-Memory Rate Limiter (Session 19)"]
+        Vercel --> CORS --> RateLimit
+    end
+
+    subgraph ServerTier["Backend Tier (Node.js & Express REST API)"]
+        Router["Express REST Router"]
+        Cache["In-Memory TTL Cache (<3ms Latency)"]
+        
+        subgraph CoreAPIs["API Pipeline Endpoints"]
+            ScanAPI["POST /api/scan"]
+            MoscaAPI["POST /api/mosca"]
+            SampleAPI["GET /api/samples"]
+            CbomAPI["POST /api/cbom"]
+            HealthAPI["GET /api/health"]
+        end
+        
+        Router --> Cache
+        Router --> CoreAPIs
+    end
+
+    subgraph AnalysisEngine["Cryptographic Analysis & Threat Pipeline"]
+        AST["Lexical Tokenizer & AST Scanner"]
+        Classifier["Quantum Threat Classifier (Shor & Grover)"]
+        MoscaEngine["Mosca Inequality Engine (X + Y > Z)"]
+        Remediation["NIST FIPS 203/204 Remediation Engine"]
+        CBOMGen["CycloneDX 1.6 CBOM Builder"]
+
+        ScanAPI --> AST
+        AST --> Classifier
+        Classifier --> MoscaEngine
+        Classifier --> Remediation
+        Classifier --> CBOMGen
+    end
+
+    subgraph DataTier["Data, Compliance & Persistence Layer"]
+        MongoDB[("MongoDB Atlas / Mongoose Schema")]
+        CycloneDX["CycloneDX 1.6 CBOM (JSON)"]
+        PDF["Executive Audit Report (PDF via jsPDF)"]
+        
+        CBOMGen --> CycloneDX
+        Remediation --> PDF
+        Router --> MongoDB
+    end
+
+    subgraph DevOpsTier["DevOps & Container Infrastructure"]
+        Docker["Docker Multi-Stage Image"]
+        Compose["docker-compose (Node.js + MongoDB)"]
+        Serverless["Vercel Serverless Edge Runtime"]
+    end
+
+    Components -->|"Debounced HTTP Requests (350ms)"| Vercel
+    RateLimit --> Router
+    DevOpsTier -.->|"Hosts & Orchestrates"| ServerTier
+```
+
+### 🔄 Asynchronous Scan & Assessment Pipeline Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Officer as Security Officer / Student
+    participant React as React Frontend (Workspace)
+    participant Gateway as Express Gateway (Rate Limit & Cache)
+    participant Scanner as AST Lexical Scanner
+    participant Threat as Quantum Classifier
+    participant Mosca as Mosca Calculator (X+Y>Z)
+    participant CBOM as CycloneDX 1.6 Generator
+
+    Officer->>React: Enters Source Code or Selects Scenario
+    React->>React: Debounce Timer (350ms)
+    React->>Gateway: POST /api/scan { code, targetYear: 2031 }
+    Gateway->>Gateway: Check In-Memory TTL Cache
+    alt Cache Hit
+        Gateway-->>React: Return Cached Analysis (<3ms)
+    else Cache Miss
+        Gateway->>Scanner: Tokenize Code & Discover Primitives
+        Scanner-->>Gateway: Discovered Primitives (RSA, ECC, AES, 3DES)
+        Gateway->>Threat: Map to Shor's & Grover's Algorithms
+        Threat-->>Gateway: Threat Levels (CRITICAL / HIGH / SAFE)
+        Gateway->>Mosca: Compute Mosca Inequality (X+Y > Z)
+        Mosca-->>Gateway: Urgency & Vulnerability Window
+        Gateway->>CBOM: Generate CycloneDX 1.6 Cryptographic BOM
+        CBOM-->>Gateway: Formatted CBOM JSON
+        Gateway-->>React: 200 OK { findings, readiness, mosca, cbom }
+    end
+    React->>React: Re-render Executive HUD & Grade Circle
+    React->>React: Update SVG Donut & Before/After Code Diff
+    Officer->>React: 1-Click Export (CycloneDX CBOM / Audit PDF)
+```
+
+---
+
 ## 🎯 Key Features & Capabilities
 
 - 🟢 **Live Code Scanner (`/api/scan`)**: Real Node.js/Express backend engine that parses source code, detects vulnerable algorithms, identifies exact line numbers, and suggests drop-in remediation.
